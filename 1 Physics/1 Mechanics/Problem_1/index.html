@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Projectile Motion Analysis: Range, Trajectory, and Interactive Visualization - Physics and Mathematics</title>
+<title>Problem 1 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Projectile Motion Analysis: Range, Trajectory, and Interactive Visualization";
+        var mkdocs_page_name = "Problem 1";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,43 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Projectile Motion Analysis: Range, Trajectory, and Interactive Visualization</a>
-<ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#abstract">Abstract:</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#1-core-calculation-functions">1. Core Calculation Functions:</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#range-calculation">Range Calculation:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#trajectory-calculation">Trajectory Calculation:</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#2-static-plots">2. Static Plots:</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#range-vs-launch-angle-plot">Range vs. Launch Angle Plot:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#trajectory-comparison-plot">Trajectory Comparison Plot:</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#3-interactive-plot">3. Interactive Plot:</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#4-demonstration">4. Demonstration:</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#example-1-basic-range-angle-plot">Example 1: Basic Range-Angle Plot</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-2-elevated-launch">Example 2: Elevated Launch</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-3-trajectory-comparison">Example 3: Trajectory Comparison</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-4-interactive-plot">Example 4: Interactive Plot</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion:</a>
-</li>
-</ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
 </li>
@@ -197,7 +161,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Projectile Motion Analysis: Range, Trajectory, and Interactive Visualization</li>
+<li class="breadcrumb-item active">Problem 1</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -205,57 +169,6 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="projectile-motion-analysis-range-trajectory-and-interactive-visualization">Projectile Motion Analysis: Range, Trajectory, and Interactive Visualization</h1>
-<h2 id="abstract">Abstract:</h2>
-<p>This code provides a comprehensive framework for analyzing the motion of a projectile. It includes both static and interactive plots to visualize how launch angle, initial velocity, and launch height affect the range and trajectory of a projectile. The core calculations are based on well-established projectile motion equations, and the interactive component allows for real-time adjustments of the input parameters.</p>
-<h2 id="1-core-calculation-functions">1. Core Calculation Functions:</h2>
-<h3 id="range-calculation">Range Calculation:</h3>
-<p>The function <code>calculate_range(v0, theta_deg, y0, g)</code> computes the horizontal distance (range) a projectile travels. The equation used depends on the launch height (<code>y0</code>). For a projectile launched from ground level (<code>y0 = 0</code>), the range is calculated using the standard formula:</p>
-<div class="arithmatex">\[
-R = \frac{v_0^2 \sin(2\theta)}{g}
-\]</div>
-<p>For a projectile launched from a height (<code>y0 &gt; 0</code>), the formula is adjusted to account for the initial height. The equation for range when launched from height <code>y0</code> is given by:</p>
-<div class="arithmatex">\[
-R = \frac{v_0 \cos(\theta) \left( v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gy_0} \right)}{g}
-\]</div>
-<p>where:
-- <code>v0</code> is the initial velocity,
-- <code>theta_deg</code> is the launch angle in degrees,
-- <code>y0</code> is the initial height,
-- <code>g</code> is the acceleration due to gravity (9.81 m/s²).</p>
-<h3 id="trajectory-calculation">Trajectory Calculation:</h3>
-<p>The function <code>calculate_trajectory(v0, theta_deg, y0, g)</code> computes the position of a projectile at different points in time during its flight. It uses the standard equations of motion:</p>
-<div class="arithmatex">\[
-x(t) = v_0 \cos(\theta) \cdot t
-\]</div>
-<div class="arithmatex">\[
-y(t) = y_0 + v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-\]</div>
-<p>where:
-- <code>x(t)</code> and <code>y(t)</code> represent the horizontal and vertical positions, respectively, at time <code>t</code>,
-- <code>t_flight</code> is the total time of flight, calculated as the time it takes for the projectile to return to the ground.</p>
-<h2 id="2-static-plots">2. Static Plots:</h2>
-<h3 id="range-vs-launch-angle-plot">Range vs. Launch Angle Plot:</h3>
-<p>The function <code>plot_range_vs_angle(v0, y0, g)</code> generates a plot showing how the range of a projectile changes with varying launch angles. The plot is generated for a fixed initial velocity and height. The maximum range is identified, and the corresponding angle is annotated on the plot.</p>
-<h3 id="trajectory-comparison-plot">Trajectory Comparison Plot:</h3>
-<p>The function <code>plot_trajectories(v0, angles, y0, g)</code> generates multiple projectile trajectories for different launch angles. This allows for a visual comparison of how the launch angle affects the trajectory shape and maximum height. Each trajectory is plotted on a common axis with horizontal and vertical distance.</p>
-<h2 id="3-interactive-plot">3. Interactive Plot:</h2>
-<p>The <code>interactive_range_plot()</code> function creates an interactive plot where users can adjust the initial velocity (<code>v0</code>), initial height (<code>y0</code>), and gravitational acceleration (<code>g</code>) using sliders. This plot dynamically updates to show how these parameters affect the range of the projectile.</p>
-<p>Key features of the interactive plot:
-- Sliders are provided to modify the initial velocity, launch height, and gravity in real time.
-- The plot updates automatically as the sliders are adjusted, recalculating the range and displaying the corresponding maximum range point.
-- The interactive components are linked to a callback function that updates the plot when the user interacts with the sliders.</p>
-<h2 id="4-demonstration">4. Demonstration:</h2>
-<h3 id="example-1-basic-range-angle-plot">Example 1: Basic Range-Angle Plot</h3>
-<p>The function <code>plot_range_vs_angle</code> is called with an initial velocity of 15 m/s and a launch height of 0 meters. The resulting plot shows the relationship between launch angle and projectile range for a flat ground scenario.</p>
-<h3 id="example-2-elevated-launch">Example 2: Elevated Launch</h3>
-<p>The function <code>plot_range_vs_angle</code> is called with a launch height of 10 meters to demonstrate the impact of elevation on projectile range. This variation in launch height modifies the trajectory and range of the projectile.</p>
-<h3 id="example-3-trajectory-comparison">Example 3: Trajectory Comparison</h3>
-<p>The function <code>plot_trajectories</code> is used to generate and compare multiple trajectories for different launch angles (20°, 35°, 45°, 55°, and 70°) using an initial velocity of 20 m/s. The comparison visually demonstrates the effect of different angles on projectile motion.</p>
-<h3 id="example-4-interactive-plot">Example 4: Interactive Plot</h3>
-<p>The <code>interactive_range_plot</code> function allows users to experiment with different values of initial velocity, launch height, and gravity. The plot updates in real-time based on user inputs, demonstrating how each parameter influences the range of the projectile.</p>
-<h2 id="conclusion">Conclusion:</h2>
-<p>This code offers a flexible and comprehensive framework for exploring projectile motion in both static and interactive forms. It is useful for educational purposes and simulations, enabling users to visualize and understand the effects of different launch parameters on projectile motion.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
